@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 162830682666279144, guid: bc63bbf30f2977e4d9ed2c16afa08b56, type: 3}
+      propertyPath: MaxLife
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4496988910612091953, guid: bc63bbf30f2977e4d9ed2c16afa08b56, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -244,6 +248,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3633932044844237191, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
   m_PrefabInstance: {fileID: 3376954567177747589}
   m_PrefabAsset: {fileID: 0}
+--- !u!58 &401613623
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401613619}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +370,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5117082988286033250, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5117082988286033250, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5117082988286033250, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5972753027238745607, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -451,6 +483,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 162830682666279144, guid: bc63bbf30f2977e4d9ed2c16afa08b56, type: 3}
+      propertyPath: MaxLife
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4496988910612091953, guid: bc63bbf30f2977e4d9ed2c16afa08b56, type: 3}
       propertyPath: m_RootOrder
       value: 2

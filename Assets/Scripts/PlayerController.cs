@@ -3,20 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    public GameObject PrefabBullet;
-    public float Speed = 5;
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+        _rb.gravityScale = 0;
+    }
 
+    [Header("Life")]
+    public float MaxLife;
+    public float CurrentLife;
+
+    [Header("Shoot")]
+    public GameObject PrefabBullet;
     public float CoolDown = 2;
 
+    [Header("Movement")]
+    public float Speed = 5;
     private float _timerCoolDown;
 
-
+    private Rigidbody2D _rb;
     // Start is called before the first frame update
     void Start()
     {
-        
+        CurrentLife = MaxLife;
     }
 
     // Update is called once per frame
@@ -24,7 +36,6 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Shoot();
-
     }
 
     private void Shoot()
@@ -48,6 +59,17 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    public IEnumerator Knockback(float knockbackDuration, float knockbackPower, Transform obj)
+    {
+        float timer = 0;
+        while(knockbackDuration > timer)
+        {
+            timer += Time.deltaTime;
+            Vector2 direction = (obj.transform.position - transform.position).normalized;
+            _rb.AddForce(-direction * knockbackPower);
+        }
+        yield return 0;
+    }
 
     private void Move()
     {
@@ -61,5 +83,13 @@ public class PlayerController : MonoBehaviour
             direction.Normalize();
             transform.position += direction * Speed * Time.deltaTime;
         }
+    }
+    public void TakeDamage(float damage)
+    {
+        CurrentLife -= damage;
+    }
+    public void Heal(float life)
+    {
+        CurrentLife += life;
     }
 }
