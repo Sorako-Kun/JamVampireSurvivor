@@ -104,11 +104,11 @@ public class PlayerController : MonoBehaviour
 
     public void HealthBarUpdate()
     {
-        if (CurrentLife < MaxLife)
-            HealthBar.transform.localScale = new Vector3(CurrentLife/MaxLife, 1, 0);
-        else
+        HealthBar.transform.localScale = new Vector3(CurrentLife/MaxLife, 1, 0);
+        if (CurrentLife <= 0)
+        {
             HealthBar.transform.localScale = new Vector3(0, 1, 0);
-
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
