@@ -151,7 +151,8 @@ MonoBehaviour:
   CurrentLife: 0
   knockbackDuration: 1
   knockbackPower: 100
-  Speed: 3
+  Speed: 1.2
+  Damage: 1
 --- !u!114 &30047588836592604
 MonoBehaviour:
   m_ObjectHideFlags: 0

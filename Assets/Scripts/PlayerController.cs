@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public int CurrentCandy;
     public int MaxCandy;
+    public Text CandyText; 
 
     private Rigidbody2D _rb;
     // Start is called before the first frame update
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
         Move();
         Shoot();
         HealthBarUpdate();
+        CandyText.text = "Candies: " + CurrentCandy.ToString();
     }
 
     private void Shoot()
