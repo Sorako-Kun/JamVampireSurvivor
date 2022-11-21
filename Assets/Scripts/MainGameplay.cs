@@ -7,22 +7,22 @@ public class MainGameplay : MonoBehaviour
     public static MainGameplay Instance;
 
     public GameObject Player;
+    public GameObject House;
     public List<EnemyController> Enemies;
-
+    public float test;
     private void Awake()
     {
         Instance = this;
+        test = 0;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
         foreach (var enemy in Enemies)
         {
             enemy.Initialize(Player);
         }
-
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class MainGameplay : MonoBehaviour
         
     }
 
-    public EnemyController GetClosestEnemy( Vector3 position  )
+    public EnemyController GetClosestEnemy(Vector3 position)
     {
         float bestDistance = float.MaxValue;
         EnemyController bestEnemy = null;
@@ -48,7 +48,6 @@ public class MainGameplay : MonoBehaviour
                 bestEnemy = enemy;
             }
         }
-
         return bestEnemy;
     }
 }

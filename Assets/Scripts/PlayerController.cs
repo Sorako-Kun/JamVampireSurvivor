@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
     public float Speed = 5;
     private float _timerCoolDown;
 
+    [Header("Movement")]
+    public int CurrentCandy;
+    public int MaxCandy;
+
     private Rigidbody2D _rb;
     // Start is called before the first frame update
     void Start()
@@ -46,8 +50,8 @@ public class PlayerController : MonoBehaviour
             return;
 
         _timerCoolDown -= CoolDown;
-        GameObject go = GameObject.Instantiate(PrefabBullet, transform.position, Quaternion.identity);
-
+        GameObject go = Instantiate(PrefabBullet, transform.position, Quaternion.identity);
+        
         EnemyController enemy = MainGameplay.Instance.GetClosestEnemy(transform.position);
 
         Vector3 direction = enemy.transform.position - transform.position;

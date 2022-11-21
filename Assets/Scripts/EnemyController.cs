@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour
         CurrentLife = MaxLife;
     }
 
-    public void Initialize( GameObject player )
+    public void Initialize(GameObject player)
     {
         _player = player;
     }
@@ -38,7 +38,6 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         MoveToPlayer();
-
     }
 
     private void MoveToPlayer()
