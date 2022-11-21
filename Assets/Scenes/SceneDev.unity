@@ -238,9 +238,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 28.730011, y: 169.55}
+  m_AnchoredPosition: {x: -109.00383, y: 169.55}
   m_SizeDelta: {x: 275.46753, y: -401.107}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &93281796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1110,6 +1110,10 @@ PrefabInstance:
       propertyPath: MaxCandy
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6828276246516835449, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
+      propertyPath: CandyText
+      value: 
+      objectReference: {fileID: 12682300}
     - target: {fileID: 6828276246516835449, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
       propertyPath: HealthBar
       value: 
