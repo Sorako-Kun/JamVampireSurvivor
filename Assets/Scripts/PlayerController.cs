@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [Header("Life")]
     public float MaxLife;
     public float CurrentLife;
+    public GameObject HealthBar;
 
     [Header("Shoot")]
     public GameObject PrefabBullet;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Shoot();
+        HealthBarUpdate();
     }
 
     private void Shoot()
@@ -99,6 +101,13 @@ public class PlayerController : MonoBehaviour
     {
         CurrentLife += life;
     }
+
+    public void HealthBarUpdate()
+    {
+        HealthBar.transform.localScale = new Vector3(CurrentLife/MaxLife, 1, 0);
+
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 6)

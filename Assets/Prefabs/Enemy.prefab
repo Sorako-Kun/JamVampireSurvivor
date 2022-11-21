@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083dac99c8b707143a39285845f0b23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxLife: 0
+  MaxLife: 20
   CurrentLife: 0
   knockbackDuration: 1
   knockbackPower: 100

@@ -15,6 +15,9 @@ public class EnemyController : MonoBehaviour
     [Header("Movement")]
     public float Speed = 4;
 
+    [Header("Damage")]
+    public float Damage = 1;
+
     private GameObject _player;
     private Rigidbody2D _rb;
     private CandyDrop candyDrop;
@@ -61,7 +64,8 @@ public class EnemyController : MonoBehaviour
     {
         if(collision.gameObject == _player)
         {
-            StartCoroutine(_player.GetComponent<PlayerController>().Knockback(knockbackDuration, knockbackPower, transform)); 
+            StartCoroutine(_player.GetComponent<PlayerController>().Knockback(knockbackDuration, knockbackPower, transform));
+            _player.GetComponent<PlayerController>().TakeDamage(Damage);
         }
     }
     public void TakeDamage(float damage)
