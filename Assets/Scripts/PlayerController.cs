@@ -104,7 +104,10 @@ public class PlayerController : MonoBehaviour
 
     public void HealthBarUpdate()
     {
-        HealthBar.transform.localScale = new Vector3(CurrentLife/MaxLife, 1, 0);
+        if (CurrentLife < MaxLife)
+            HealthBar.transform.localScale = new Vector3(CurrentLife/MaxLife, 1, 0);
+        else
+            HealthBar.transform.localScale = new Vector3(0, 1, 0);
 
     }
 
