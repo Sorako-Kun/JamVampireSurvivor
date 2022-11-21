@@ -44,22 +44,25 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        _timerCoolDown += Time.deltaTime;
-
-        if (_timerCoolDown < CoolDown)
-            return;
-
-        _timerCoolDown -= CoolDown;
-        GameObject go = Instantiate(PrefabBullet, transform.position, Quaternion.identity);
-        
-        EnemyController enemy = MainGameplay.Instance.GetClosestEnemy(transform.position);
-
-        Vector3 direction = enemy.transform.position - transform.position;
-        if (direction.sqrMagnitude > 0)
+        if (MainGameplay.Instance.Enemies.Count > 0)
         {
-            direction.Normalize();
+            _timerCoolDown += Time.deltaTime;
 
-            go.GetComponent<Bullet>().Initialize(direction);
+            if (_timerCoolDown < CoolDown)
+                return;
+
+            _timerCoolDown -= CoolDown;
+            GameObject go = Instantiate(PrefabBullet, transform.position, Quaternion.identity);
+
+            EnemyController enemy = MainGameplay.Instance.GetClosestEnemy(transform.position);
+
+            Vector3 direction = enemy.transform.position - transform.position;
+            if (direction.sqrMagnitude > 0)
+            {
+                direction.Normalize();
+
+                go.GetComponent<Bullet>().Initialize(direction);
+            }
         }
 
     }
@@ -95,5 +98,16 @@ public class PlayerController : MonoBehaviour
     public void Heal(float life)
     {
         CurrentLife += life;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 6)
+        {
+            if (CurrentCandy < MaxCandy)
+            {
+                CurrentCandy += 1;
+                Destroy(collision.gameObject);
+            }
+        }
     }
 }

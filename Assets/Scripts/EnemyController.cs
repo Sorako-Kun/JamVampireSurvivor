@@ -17,10 +17,11 @@ public class EnemyController : MonoBehaviour
 
     private GameObject _player;
     private Rigidbody2D _rb;
-
+    private CandyDrop candyDrop;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        candyDrop = GetComponent<CandyDrop>();
     }
 
     // Start is called before the first frame update
@@ -68,6 +69,7 @@ public class EnemyController : MonoBehaviour
         CurrentLife -= damage;
         if (CurrentLife <= 0)
         {
+           candyDrop.DropCandy();
            MainGameplay.Instance.Enemies.Remove(this); 
            Destroy(gameObject);
         }
