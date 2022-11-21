@@ -8,6 +8,7 @@ public class MainGameplay : MonoBehaviour
 
     public GameObject Player;
     public GameObject House;
+    public GameObject Candy;
     public List<EnemyController> Enemies;
     public float test;
     private void Awake()
