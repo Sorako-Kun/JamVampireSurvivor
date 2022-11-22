@@ -22,12 +22,16 @@ public class PlayerController : MonoBehaviour
     public GameObject PrefabBullet;
     public float CoolDown = 2;
     public bool QuarterShoot = false;
+    public Vector2 aim;
+    private Aiming aiming;
+    public int index;
+    public int maxNumberOfWeapon;
 
     [Header("Movement")]
     public float Speed = 5;
     private float _timerCoolDown;
 
-    [Header("Movement")]
+    [Header("Candy")]
     public int CurrentCandy;
     public int MaxCandy;
     public Text CandyText; 
@@ -37,20 +41,54 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         CurrentLife = MaxLife;
+        aiming = GetComponentInChildren<Aiming>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        aim = aiming.aim;
+        if (Input.GetButtonDown("SwitchRight") && index < maxNumberOfWeapon)
+            index++;
+        if (Input.GetButtonDown("SwitchLeft") && index > 0)
+            index--;
+
         Move();
-        Shoot();
+        if(index == 0)
+            BasicShoot();
+        if (index == 1)
+            Triple();
         HealthBarUpdate();
 
         // Update Candies Number
         CandyText.text = "Candies: " + CurrentCandy.ToString() + "/" + MaxCandy.ToString();
     }
 
-    private void Shoot()
+    private void Triple()
+    {
+        if (MainGameplay.Instance.Enemies.Count > 0)
+        {
+            _timerCoolDown += Time.deltaTime;
+
+            if (_timerCoolDown < CoolDown)
+                return;
+
+            _timerCoolDown -= CoolDown;
+            GameObject go = Instantiate(PrefabBullet, aiming.transform.position, Quaternion.identity);
+            GameObject go1 = Instantiate(PrefabBullet, aiming.transform.position, Quaternion.identity);
+            GameObject go2 = Instantiate(PrefabBullet, aiming.transform.position, Quaternion.identity);
+            if (aim.sqrMagnitude > 0)
+            {
+                aim.Normalize();
+                go.GetComponent<Bullet>().Initialize(new Vector2(aim.x + 0.1f, aim.y));
+                go1.GetComponent<Bullet>().Initialize(new Vector2(aim.x - 0.4f, aim.y - 0.4f));
+                go2.GetComponent<Bullet>().Initialize(new Vector2(aim.x + 0.4f, aim.y + 0.4f));
+            }
+        }
+    }
+
+    private void BasicShoot()
     {
         if (MainGameplay.Instance.Enemies.Count > 0)
         {
