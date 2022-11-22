@@ -8,7 +8,8 @@ public class MainMenu : MonoBehaviour
 {
     public string TargetRoom = "SceneDev";
     public Button Button;
-    //public Button ButtonQuit;
+    public GameObject MenuCanvas;
+    public GameObject CreditsCanvas;
 
     public void OnClickPlay() {
         SceneManager.LoadScene(TargetRoom);
@@ -25,5 +26,17 @@ public class MainMenu : MonoBehaviour
     public void OnNotHovered()
     {
         Button.transform.localScale = new Vector3(1, 1, 0);
+    }
+
+    public void OnClickCredits()
+    {
+        CreditsCanvas.SetActive(true);
+        MenuCanvas.SetActive(false);
+    }
+
+    public void OnClickMenu()
+    {
+        MenuCanvas.SetActive(true);
+        CreditsCanvas.SetActive(false);
     }
 }
