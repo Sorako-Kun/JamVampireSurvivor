@@ -44,8 +44,8 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Shoot();
-        if (QuarterShoot)
-            ShootQuarter();
+        //if (QuarterShoot)
+        //    ShootQuarter();
         HealthBarUpdate();
 
         // Update Candies Number
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
             EnemyController enemy = MainGameplay.Instance.GetClosestEnemy(transform.position);
 
             // Normal Shoot
-            Vector3 direction = enemy.transform.position - enemy.transform.position - transform.position;
+            Vector3 direction = enemy.transform.position - transform.position;
             if (direction.sqrMagnitude > 0)
             {
                 direction.Normalize();
@@ -91,10 +91,8 @@ public class PlayerController : MonoBehaviour
             _timerCoolDown -= CoolDown;
             GameObject go = Instantiate(PrefabBullet, transform.position, Quaternion.identity);
 
-            EnemyController enemy = MainGameplay.Instance.GetClosestEnemy(transform.position);
-
             // Normal Shoot
-            Vector3 direction = enemy.transform.position - enemy.transform.position - transform.position;
+            Vector3 direction = transform.position - transform.position;
             if (direction.sqrMagnitude > 0)
             {
                 direction.Normalize();
