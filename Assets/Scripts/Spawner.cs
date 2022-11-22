@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     public float SpawnTime;
     public int NumberSpawnMin;
     public int NumberSpawnMax;
-
+    public bool IsActive;
     private float timer;
     // Start is called before the first frame update
     void Start()
@@ -19,10 +19,14 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Spawn(); 
+        if (IsActive)
+            Spawn();
+        else
+            timer = 0;
     }
     public void Spawn()
     {
+        
         timer += Time.deltaTime;
         if(timer > SpawnTime)
         {
@@ -40,6 +44,14 @@ public class Spawner : MonoBehaviour
                 }
             }
             timer -= SpawnTime;
+            IsActive = false;
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 3)
+        {
+            IsActive = true;
         }
     }
 }

@@ -167,6 +167,7 @@ public class PlayerController : MonoBehaviour
                 CurrentCandy += 1;
                 Destroy(collision.gameObject);
             }
-        }
+        }      
+
     }
 }
