@@ -100,9 +100,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxLife: 0
   CurrentLife: 0
+  HealthBar: {fileID: 0}
   PrefabBullet: {fileID: 0}
   CoolDown: 2
+  QuarterShoot: 1
   Speed: 5
+  CurrentCandy: 0
+  MaxCandy: 100
+  CandyText: {fileID: 0}
 --- !u!50 &5117082988286033250
 Rigidbody2D:
   serializedVersion: 4

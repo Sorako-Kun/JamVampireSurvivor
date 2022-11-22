@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [Header("Shoot")]
     public GameObject PrefabBullet;
     public float CoolDown = 2;
+    public bool QuarterShoot = false;
 
     [Header("Movement")]
     public float Speed = 5;
@@ -43,8 +44,12 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Shoot();
+        if (QuarterShoot)
+            ShootQuarter();
         HealthBarUpdate();
-        CandyText.text = "Candies: " + CurrentCandy.ToString();
+
+        // Update Candies Number
+        CandyText.text = "Candies: " + CurrentCandy.ToString() + "/" + MaxCandy.ToString();
     }
 
     private void Shoot()
@@ -61,16 +66,46 @@ public class PlayerController : MonoBehaviour
 
             EnemyController enemy = MainGameplay.Instance.GetClosestEnemy(transform.position);
 
-            Vector3 direction = enemy.transform.position - transform.position;
+            // Normal Shoot
+            Vector3 direction = enemy.transform.position - enemy.transform.position - transform.position;
             if (direction.sqrMagnitude > 0)
             {
                 direction.Normalize();
 
                 go.GetComponent<Bullet>().Initialize(direction);
             }
+
         }
 
     }
+
+    private void ShootQuarter()
+    {
+        if (MainGameplay.Instance.Enemies.Count > 0)
+        {
+            _timerCoolDown += Time.deltaTime;
+
+            if (_timerCoolDown < CoolDown)
+                return;
+
+            _timerCoolDown -= CoolDown;
+            GameObject go = Instantiate(PrefabBullet, transform.position, Quaternion.identity);
+
+            EnemyController enemy = MainGameplay.Instance.GetClosestEnemy(transform.position);
+
+            // Normal Shoot
+            Vector3 direction = enemy.transform.position - enemy.transform.position - transform.position;
+            if (direction.sqrMagnitude > 0)
+            {
+                direction.Normalize();
+
+                go.GetComponent<Bullet>().Initialize(direction);
+            }
+
+        }
+
+    }
+
     public IEnumerator Knockback(float knockbackDuration, float knockbackPower, Transform obj)
     {
         float timer = 0;
