@@ -203,6 +203,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HouseCandy: 0
   HouseText: {fileID: 1899295610}
+  timer: 0
+  SpawnTime: 45
+  NoCandyHouseText: {fileID: 0}
 --- !u!50 &67412566
 Rigidbody2D:
   serializedVersion: 4
@@ -585,6 +588,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 519420032, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488949422, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3633932044844237191, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
       propertyPath: m_Name
       value: Player
@@ -801,12 +812,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9194226958894516701, guid: e010b6fb24d2bfb4cb3a97a11213801f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15.2328
+      objectReference: {fileID: 0}
+    - target: {fileID: 9194226958894516701, guid: e010b6fb24d2bfb4cb3a97a11213801f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.23
       objectReference: {fileID: 0}
     - target: {fileID: 9194226958894516701, guid: e010b6fb24d2bfb4cb3a97a11213801f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.28
+      value: -4.938
       objectReference: {fileID: 0}
     - target: {fileID: 9194226958894516701, guid: e010b6fb24d2bfb4cb3a97a11213801f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1597,7 +1612,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -315.13, y: 188.12}
+  m_AnchoredPosition: {x: -315.12997, y: 188.12}
   m_SizeDelta: {x: -630.25, y: -375.909}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1887775519
