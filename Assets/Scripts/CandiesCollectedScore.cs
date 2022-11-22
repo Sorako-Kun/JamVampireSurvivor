@@ -14,5 +14,8 @@ public class CandiesCollectedScore : MonoBehaviour
         var _house = GameObject.Find("House");
         CandiesScore = _house.GetComponent<HouseBehavior>().HouseCandy.ToString();
         CandyText.text = "Total Candies: " + CandiesScore.ToString();
+        if (_house != null)
+            Destroy(_house);
     }
+
 }
