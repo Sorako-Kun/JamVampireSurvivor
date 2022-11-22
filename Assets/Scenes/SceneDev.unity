@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078bf64f205830140ae4d30dfc611601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InGameTimer: 0.2
+  InGameTimer: 2
   Player: {fileID: 401613619}
   House: {fileID: 1510932932}
   Candy: {fileID: 5433081835599452694, guid: f6127100ba7d115448894948a4646476, type: 3}
