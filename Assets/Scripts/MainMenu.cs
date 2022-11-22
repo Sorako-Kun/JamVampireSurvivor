@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public Button Button;
     public GameObject MenuCanvas;
     public GameObject CreditsCanvas;
+    public GameObject RulesCanvas;
 
     public void OnClickPlay() {
         SceneManager.LoadScene(TargetRoom);
@@ -30,13 +31,25 @@ public class MainMenu : MonoBehaviour
 
     public void OnClickCredits()
     {
+        OnNotHovered();
         CreditsCanvas.SetActive(true);
         MenuCanvas.SetActive(false);
+        RulesCanvas.SetActive(false);
     }
 
     public void OnClickMenu()
     {
+        OnNotHovered();
         MenuCanvas.SetActive(true);
         CreditsCanvas.SetActive(false);
+        RulesCanvas.SetActive(false);
+    }
+
+    public void OnClickRules()
+    {
+        OnNotHovered();
+        RulesCanvas.SetActive(true);
+        CreditsCanvas.SetActive(false);
+        MenuCanvas.SetActive(false);
     }
 }
