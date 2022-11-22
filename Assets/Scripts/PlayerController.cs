@@ -44,8 +44,6 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Shoot();
-        //if (QuarterShoot)
-        //    ShootQuarter();
         HealthBarUpdate();
 
         // Update Candies Number
@@ -68,31 +66,6 @@ public class PlayerController : MonoBehaviour
 
             // Normal Shoot
             Vector3 direction = enemy.transform.position - transform.position;
-            if (direction.sqrMagnitude > 0)
-            {
-                direction.Normalize();
-
-                go.GetComponent<Bullet>().Initialize(direction);
-            }
-
-        }
-
-    }
-
-    private void ShootQuarter()
-    {
-        if (MainGameplay.Instance.Enemies.Count > 0)
-        {
-            _timerCoolDown += Time.deltaTime;
-
-            if (_timerCoolDown < CoolDown)
-                return;
-
-            _timerCoolDown -= CoolDown;
-            GameObject go = Instantiate(PrefabBullet, transform.position, Quaternion.identity);
-
-            // Normal Shoot
-            Vector3 direction = transform.position - transform.position;
             if (direction.sqrMagnitude > 0)
             {
                 direction.Normalize();
