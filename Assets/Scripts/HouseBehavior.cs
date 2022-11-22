@@ -9,6 +9,10 @@ public class HouseBehavior : MonoBehaviour
     public int HouseCandy = 0;
     public Text HouseText;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
 
     private void Update()
     {
