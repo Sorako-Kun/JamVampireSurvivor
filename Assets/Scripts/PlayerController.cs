@@ -20,7 +20,10 @@ public class PlayerController : MonoBehaviour
 
     [Header("Shoot")]
     public GameObject PrefabBullet;
-    public float CoolDown = 2;
+    public float CoolDownWeapon0 = 2;
+    public float CoolDownWeapon1 = 2;
+    public float CoolDownWeapon2 = 2;
+    public float CoolDownWeapon3 = 2;
     public bool QuarterShoot = false;
     public Vector2 aim;
     private Aiming aiming;
@@ -59,10 +62,35 @@ public class PlayerController : MonoBehaviour
             BasicShoot();
         if (index == 1)
             Triple();
+        if (index == 2)
+            Cross();
+
         HealthBarUpdate();
 
         // Update Candies Number
         CandyText.text = "Candies: " + CurrentCandy.ToString() + "/" + MaxCandy.ToString();
+    }
+
+    private void Cross()
+    {
+        if (MainGameplay.Instance.Enemies.Count > 0)
+        {
+            _timerCoolDown += Time.deltaTime;
+
+            if (_timerCoolDown < CoolDownWeapon1)
+                return;
+
+            _timerCoolDown -= CoolDownWeapon1;
+            GameObject go = Instantiate(PrefabBullet, new Vector2(transform.position.x, transform.position.y + 0.5f), Quaternion.identity);
+            GameObject go1 = Instantiate(PrefabBullet, new Vector2(transform.position.x, transform.position.y - 0.5f), Quaternion.identity);
+            GameObject go2 = Instantiate(PrefabBullet, new Vector2(transform.position.x - 0.5f, transform.position.y), Quaternion.identity);
+            GameObject go3 = Instantiate(PrefabBullet, new Vector2(transform.position.x + 0.5f, transform.position.y), Quaternion.identity);
+            go.GetComponent<Bullet>().Initialize(new Vector2(0, 1));
+            go1.GetComponent<Bullet>().Initialize(new Vector2(0, -1));
+            go2.GetComponent<Bullet>().Initialize(new Vector2(-1, 0));
+            go3.GetComponent<Bullet>().Initialize(new Vector2(1, 0));
+
+        }
     }
 
     private void Triple()
@@ -71,10 +99,10 @@ public class PlayerController : MonoBehaviour
         {
             _timerCoolDown += Time.deltaTime;
 
-            if (_timerCoolDown < CoolDown)
+            if (_timerCoolDown < CoolDownWeapon1)
                 return;
 
-            _timerCoolDown -= CoolDown;
+            _timerCoolDown -= CoolDownWeapon1;
             GameObject go = Instantiate(PrefabBullet, aiming.transform.position, Quaternion.identity);
             GameObject go1 = Instantiate(PrefabBullet, aiming.transform.position, Quaternion.identity);
             GameObject go2 = Instantiate(PrefabBullet, aiming.transform.position, Quaternion.identity);
@@ -94,10 +122,10 @@ public class PlayerController : MonoBehaviour
         {
             _timerCoolDown += Time.deltaTime;
 
-            if (_timerCoolDown < CoolDown)
+            if (_timerCoolDown < CoolDownWeapon0)
                 return;
 
-            _timerCoolDown -= CoolDown;
+            _timerCoolDown -= CoolDownWeapon0;
             GameObject go = Instantiate(PrefabBullet, transform.position, Quaternion.identity);
 
             EnemyController enemy = MainGameplay.Instance.GetClosestEnemy(transform.position);
