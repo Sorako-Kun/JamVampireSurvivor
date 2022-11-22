@@ -384,13 +384,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078bf64f205830140ae4d30dfc611601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InGameTimer: 3
+  InGameTimer: 0.2
   Player: {fileID: 401613619}
   House: {fileID: 1510932932}
   Candy: {fileID: 5433081835599452694, guid: f6127100ba7d115448894948a4646476, type: 3}
   Enemies:
   - {fileID: 1931475071}
   - {fileID: 117166427}
+  - {fileID: 162830682666279144, guid: 69f25a8d59fe2ef44ad47fc5eaa8d194, type: 3}
   TimerText: {fileID: 268502758}
 --- !u!4 &133957340
 Transform:
@@ -1158,6 +1159,10 @@ PrefabInstance:
       propertyPath: PrefabBullet
       value: 
       objectReference: {fileID: 3633932044844237191, guid: 4660ac6ef21504147b176616fca71ee3, type: 3}
+    - target: {fileID: 6828276246516835449, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
+      propertyPath: QuarterShoot
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c3987bd5113f804c9f3a7f0394753f7, type: 3}
 --- !u!1 &4098126190579216838

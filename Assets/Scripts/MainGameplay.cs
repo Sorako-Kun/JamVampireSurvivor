@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainGameplay : MonoBehaviour
@@ -37,6 +38,8 @@ public class MainGameplay : MonoBehaviour
 
         if (InGameTimer > 0)
             InGameTimer -= Time.deltaTime;
+        else
+            SceneManager.LoadScene("EndScore");
 
         DisplayTime(InGameTimer);
 
