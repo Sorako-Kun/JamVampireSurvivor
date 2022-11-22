@@ -152,6 +152,7 @@ MonoBehaviour:
   knockbackDuration: 1
   knockbackPower: 100
   Speed: 3
+  Damage: 1
 --- !u!114 &30047588836592604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,4 +165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313a21b3ea4a0b145b426dd63a4990b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumberOfCandy: 0
+  NumberOfCandy: 2
