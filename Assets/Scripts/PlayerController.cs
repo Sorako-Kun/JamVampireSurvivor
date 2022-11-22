@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public float Speed = 5;
     private float _timerCoolDown;
+    public Camera camera;
 
     [Header("Candy")]
     public int CurrentCandy;
@@ -45,7 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         CurrentLife = MaxLife;
         aiming = GetComponentInChildren<Aiming>();
-       
+        camera = GetComponentInChildren<Camera>();
     }
 
     // Update is called once per frame
